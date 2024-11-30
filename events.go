@@ -7,7 +7,8 @@ package termui
 import (
 	"fmt"
 
-	tb "github.com/nsf/termbox-go"
+	"github.com/gdamore/tcell/v2"
+	tb "github.com/gdamore/tcell/v2/termbox"
 )
 
 /*
@@ -175,7 +176,7 @@ func convertTermboxMouseEvent(e tb.Event) Event {
 	if !ok {
 		converted = "Unknown_Mouse_Button"
 	}
-	Drag := e.Mod == tb.ModMotion
+	Drag := e.Mod == tb.Modifier(tcell.ModMeta)
 	return Event{
 		Type: MouseEvent,
 		ID:   converted,
